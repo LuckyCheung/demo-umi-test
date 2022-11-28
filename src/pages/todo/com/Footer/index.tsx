@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { Row, Col, Button, Space } from 'antd';
 
-import { Visibility, ToDoContext } from '../../index';
+import { ToDoContext } from '../../index';
+import { Visibility } from '../../useTodo';
 
 type Props = {
   remaining: number;

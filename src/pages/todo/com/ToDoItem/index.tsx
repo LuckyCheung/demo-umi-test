@@ -13,13 +13,13 @@ const ENTER_KEY_CODE = 'Enter';
 
 type Props = {
   todo: ToDoItemType;
+  onDel: (id: number) => void;
+  onComplete: (id: number) => void;
 };
 
 const ToDoItem: React.FC<Props> = (props) => {
-  const { todo } = props;
-  const { editCacheId, setEditCacheId, onDel, onEdit, onComplete } = useContext(
-    ToDoContext,
-  );
+  const { todo, onComplete, onDel } = props;
+  const { editCacheId, setEditCacheId, onEdit } = useContext(ToDoContext);
 
   const handleComplete = () => {
     onComplete(todo.id);

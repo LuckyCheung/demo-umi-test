@@ -5,14 +5,16 @@ import ToDoItem from '../ToDoItem';
 
 type Props = {
   todos: ToDoItemType[];
+  onDel: (id: number) => void;
+  onComplete: (id: number) => void;
 };
 
 const ToDoList: FC<Props> = (props) => {
-  const { todos } = props;
+  const { todos, ...rest } = props;
   return (
     <div>
       {todos.map((item) => {
-        return <ToDoItem key={item.id} todo={item}></ToDoItem>;
+        return <ToDoItem key={item.id} todo={item} {...rest}></ToDoItem>;
       })}
     </div>
   );
