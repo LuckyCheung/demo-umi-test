@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { Row, Col, Radio, Input, Button } from 'antd';
+import type { InputRef } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 
 import { ToDoContext } from '../../index';
@@ -21,6 +22,11 @@ const ToDoItem: React.FC<Props> = (props) => {
   const { todo, onComplete, onDel } = props;
   const { editCacheId, setEditCacheId, onEdit } = useContext(ToDoContext);
 
+  const inputRef = useRef<InputRef>(null);
+  useEffect(() => {
+    editCacheId === todo.id && inputRef.current?.focus();
+  }, [editCacheId]);
+
   const handleComplete = () => {
     onComplete(todo.id);
   };
@@ -29,12 +35,13 @@ const ToDoItem: React.FC<Props> = (props) => {
     setEditCacheId(todo.id);
   };
 
-  const handleEdit = (e: React.FocusEvent<HTMLInputElement>) => {
-    onEdit(todo.id, e.target.value);
-  };
-
   const handleCancel = () => {
     setEditCacheId(-1);
+  };
+
+  const handleEdit = (e: React.FocusEvent<HTMLInputElement>) => {
+    onEdit(todo.id, e.target.value);
+    handleCancel();
   };
 
   const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -64,6 +71,7 @@ const ToDoItem: React.FC<Props> = (props) => {
       >
         {todo.id === editCacheId ? (
           <Input
+            ref={inputRef}
             defaultValue={todo.content}
             onBlur={handleEdit}
             onKeyUp={handleKeyUp}

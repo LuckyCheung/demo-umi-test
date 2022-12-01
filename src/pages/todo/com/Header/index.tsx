@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { Input, Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
@@ -33,4 +33,4 @@ const Header: React.FC<Props> = (props) => {
   );
 };
 
-export default Header;
+export default memo(Header);

@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useState } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import { Card } from 'antd';
 
@@ -41,19 +41,17 @@ const ToDo: React.FC = () => {
         onClearCompleted,
       }}
     >
-      <PageContainer>
-        <Card title="To Do List">
-          <Header onAdd={onAdd}></Header>
-          <ToDoList
-            todos={filterTodos}
-            onDel={onDel}
-            onComplete={onComplete}
-          ></ToDoList>
-          {todos.length ? (
-            <Footer total={todos.length} remaining={remaining}></Footer>
-          ) : null}
-        </Card>
-      </PageContainer>
+      <Card title="To Do List">
+        <Header onAdd={onAdd}></Header>
+        <ToDoList
+          todos={filterTodos}
+          onDel={onDel}
+          onComplete={onComplete}
+        ></ToDoList>
+        {todos.length ? (
+          <Footer total={todos.length} remaining={remaining}></Footer>
+        ) : null}
+      </Card>
     </ToDoContext.Provider>
   );
 };
