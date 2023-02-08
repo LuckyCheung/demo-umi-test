@@ -1,8 +1,8 @@
 import type { IRoute } from '@umijs/types';
-import { AppstoreOutlined } from '@ant-design/icons';
 
 const routes: IRoute[] = [
   {
+    exact: false,
     path: '/',
     component: '@/layouts/index',
     routes: [
@@ -12,14 +12,14 @@ const routes: IRoute[] = [
       },
       {
         name: '首页',
-        icon: <AppstoreOutlined />,
         path: '/home',
+        icon: 'appstore',
         component: '@/pages/index',
       },
       {
         name: '测试',
         path: '/test',
-        icon: <AppstoreOutlined />,
+        icon: 'edit',
         routes: [
           {
             name: 'todo',
@@ -27,6 +27,9 @@ const routes: IRoute[] = [
             component: '@/pages/todo',
           },
         ],
+      },
+      {
+        component: '@/pages/404',
       },
     ],
   },

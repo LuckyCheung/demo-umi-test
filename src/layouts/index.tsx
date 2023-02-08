@@ -1,40 +1,23 @@
 import React, { useState } from 'react';
 import { IRouteComponentProps } from 'umi';
 import type { ProSettings } from '@ant-design/pro-layout';
-import {
-  PageContainer,
-  ProLayout,
-  SettingDrawer,
-} from '@ant-design/pro-layout';
-import { Card } from 'antd';
+import { PageContainer, SettingDrawer } from '@ant-design/pro-layout';
+import { ConfigProvider } from 'antd';
 import { Provider } from 'react-redux';
 import store from '@/store';
-import routes from '../../config/routes';
 
-const Layout: React.FC<IRouteComponentProps> = (props) => {
-  const { children } = props;
-
+export const AppProvider: React.FC = ({ children }) => {
   const [settings, setSetting] = useState<Partial<ProSettings> | undefined>({
     layout: 'side',
     fixSiderbar: true,
   });
-
   return (
-    <div
-      id="test-pro-layout"
-      style={{
-        height: '100vh',
-      }}
-    >
+    <ConfigProvider csp={{ nonce: 'YourNonceCode' }}>
       <Provider store={store}>
-        <ProLayout title="UMI" siderWidth={216} route={routes[0]} {...settings}>
-          <PageContainer fixedHeader>
-            <Card>{children}</Card>
-          </PageContainer>
-        </ProLayout>
+        {children}
         <SettingDrawer
           enableDarkTheme
-          getContainer={() => document.getElementById('test-pro-layout')}
+          getContainer={() => document.getElementById('base-layout')}
           settings={settings}
           onSettingChange={(changeSetting) => {
             setSetting(changeSetting);
@@ -42,6 +25,14 @@ const Layout: React.FC<IRouteComponentProps> = (props) => {
           disableUrlParams={false}
         />
       </Provider>
+    </ConfigProvider>
+  );
+};
+
+const Layout: React.FC<IRouteComponentProps> = ({ children }) => {
+  return (
+    <div id="base-layout">
+      <PageContainer fixedHeader>{children}</PageContainer>
     </div>
   );
 };

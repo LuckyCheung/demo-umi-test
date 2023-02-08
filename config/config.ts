@@ -11,4 +11,9 @@ export default defineConfig({
   theme,
   fastRefresh: {},
   mfsu: {},
+  layout: {
+    name: 'Umi Test',
+    layout: 'side',
+    siderWidth: 208,
+  },
 });

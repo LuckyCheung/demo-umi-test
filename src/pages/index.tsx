@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import { PageContainer } from '@ant-design/pro-layout';
 import { Card, Col, Row } from 'antd';
 import { history } from 'umi';
 import styles from './index.less';
