@@ -3,7 +3,7 @@ import routes from './routes';
 import theme from './theme';
 
 export default defineConfig({
-  title: 'react-test',
+  title: 'Umi Test',
   nodeModulesTransform: {
     type: 'none',
   },
@@ -13,7 +13,6 @@ export default defineConfig({
   mfsu: {},
   layout: {
     name: 'Umi Test',
-    layout: 'side',
     siderWidth: 208,
   },
 });

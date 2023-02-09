@@ -5,6 +5,7 @@ const routes: IRoute[] = [
     exact: false,
     path: '/',
     component: '@/layouts/index',
+    flatMenu: true,
     routes: [
       {
         path: '/',
@@ -19,7 +20,7 @@ const routes: IRoute[] = [
       {
         name: '测试',
         path: '/test',
-        icon: 'edit',
+        icon: 'appstore',
         routes: [
           {
             name: 'todo',

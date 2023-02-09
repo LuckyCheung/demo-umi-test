@@ -1,12 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import type { ToDoItemType } from '@/pages/todo/data';
 
 export const STORAGE_KEY = 'vue-todomvc';
-
-export type ToDoItemType = {
-  id: number;
-  content: string;
-  complete: boolean;
-};
 
 export type TodoState = {
   todos: ToDoItemType[];

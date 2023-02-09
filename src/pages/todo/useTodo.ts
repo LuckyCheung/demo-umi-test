@@ -22,7 +22,6 @@ const useTodo = () => {
       }),
     );
   };
-  // const [todos, setToDos] = useState<ToDoItemType[]>(storeTodos);
   const [editCacheId, setEditCacheId] = useState(-1);
   const [visibility, setVisibility] = useState(Visibility.All);
 
