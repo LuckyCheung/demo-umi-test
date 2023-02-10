@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Row, Col, Button, Space } from 'antd';
 
 import { ToDoContext } from '../../index';
-import { Visibility } from '../../useTodo';
+import { VisibilityEnum } from '../../data';
 
 type Props = {
   remaining: number;
@@ -19,12 +19,12 @@ const Footer: React.FC<Props> = (props) => {
   } = useContext(ToDoContext);
 
   const VisibilityText = {
-    [Visibility.All]: 'All',
-    [Visibility.Active]: 'Active',
-    [Visibility.Completed]: 'Completed',
+    [VisibilityEnum.All]: 'All',
+    [VisibilityEnum.Active]: 'Active',
+    [VisibilityEnum.Completed]: 'Completed',
   };
 
-  const buttons = Object.values(Visibility).map((item) => {
+  const buttons = Object.values(VisibilityEnum).map((item) => {
     return {
       id: item,
       text: VisibilityText[item],

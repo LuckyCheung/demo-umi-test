@@ -1,14 +1,8 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import type { ToDoItemType } from './data';
+import { ToDoItemType, VisibilityEnum } from './data';
 import type { RootState } from '@/store/index';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateTodos, STORAGE_KEY } from '@/store/modules/todo';
-
-export enum Visibility {
-  All = 'all',
-  Active = 'active',
-  Completed = 'completed',
-}
 
 const useTodo = () => {
   const todos: ToDoItemType[] = useSelector(
@@ -23,7 +17,7 @@ const useTodo = () => {
     );
   };
   const [editCacheId, setEditCacheId] = useState(-1);
-  const [visibility, setVisibility] = useState(Visibility.All);
+  const [visibility, setVisibility] = useState(VisibilityEnum.All);
 
   // 数据持久化
   useEffect(() => {
@@ -33,13 +27,13 @@ const useTodo = () => {
   // read
   const filters = useMemo(() => {
     return {
-      [Visibility.All]: () => {
+      [VisibilityEnum.All]: () => {
         return todos;
       },
-      [Visibility.Active]: () => {
+      [VisibilityEnum.Active]: () => {
         return todos.filter((item) => !item.complete);
       },
-      [Visibility.Completed]: () => {
+      [VisibilityEnum.Completed]: () => {
         return todos.filter((item) => item.complete);
       },
     };
@@ -50,7 +44,7 @@ const useTodo = () => {
   }, [visibility, todos]);
 
   const remaining = useMemo(() => {
-    return filters[Visibility.Active]().length;
+    return filters[VisibilityEnum.Active]().length;
   }, [todos]);
 
   // create
@@ -102,7 +96,7 @@ const useTodo = () => {
   };
 
   const onClearCompleted = () => {
-    setToDos(filters[Visibility.Active]());
+    setToDos(filters[VisibilityEnum.Active]());
   };
 
   return {
