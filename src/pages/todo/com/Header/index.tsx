@@ -13,7 +13,7 @@ const Header: React.FC<Props> = (props) => {
     if (!hasContent) {
       return;
     }
-    props.onAdd?.(content);
+    props.onAdd(content);
     setContent('');
   };
 
