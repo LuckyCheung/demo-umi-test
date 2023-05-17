@@ -27,6 +27,11 @@ const routes: IRoute[] = [
             path: '/test/todo',
             component: '@/pages/todo',
           },
+          {
+            name: 'user',
+            path: '/test/user',
+            component: '@/pages/user',
+          },
         ],
       },
       {

@@ -10,9 +10,13 @@ export default defineConfig({
   routes,
   theme,
   fastRefresh: {},
+  mock: false,
   mfsu: {},
   layout: {
     name: 'Umi Test',
     siderWidth: 208,
+  },
+  request: {
+    dataField: 'data',
   },
 });
