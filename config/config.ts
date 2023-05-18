@@ -11,9 +11,9 @@ export default defineConfig({
   theme,
   fastRefresh: {},
   mfsu: {},
-  access: {
-    strictMode: true,
-  },
+  // access: {
+  //   strictMode: true,
+  // },
   layout: {
     name: 'Umi Test',
     siderWidth: 208,

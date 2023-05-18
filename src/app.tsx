@@ -7,9 +7,8 @@ import {
   Settings as LayoutSettings,
 } from '@ant-design/pro-layout';
 
-export function rootContainer(container: any) {
-  return React.createElement(AppLayout, null, container);
-  // return <AppLayout>{container}</AppLayout>;
+export function rootContainer(container: any, { routes }: any) {
+  return <AppLayout routes={routes}>{container}</AppLayout>;
 }
 
 // export const layout: RunTimeLayoutConfig = ({}): BasicLayoutProps => {

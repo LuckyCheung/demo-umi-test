@@ -6,10 +6,7 @@ import { Provider } from 'react-redux';
 import store from '@/store';
 import styles from './index.less';
 
-export const AppLayout: React.FC<IRouteComponentProps> = ({
-  children,
-  routes,
-}) => {
+export const AppLayout: React.FC<any> = ({ children, routes }) => {
   const [settings, setSetting] = useState<Partial<ProSettings> | undefined>({
     layout: 'side',
     fixSiderbar: true,
