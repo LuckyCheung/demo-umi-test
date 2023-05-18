@@ -10,8 +10,10 @@ export default defineConfig({
   routes,
   theme,
   fastRefresh: {},
-  mock: false,
   mfsu: {},
+  access: {
+    strictMode: true,
+  },
   layout: {
     name: 'Umi Test',
     siderWidth: 208,

@@ -16,6 +16,7 @@ const routes: IRoute[] = [
         path: '/home',
         icon: 'appstore',
         component: '@/pages/index',
+        access: 'home',
       },
       {
         name: '测试',
@@ -26,11 +27,13 @@ const routes: IRoute[] = [
             name: 'todo',
             path: '/test/todo',
             component: '@/pages/todo',
+            access: 'todo',
           },
           {
             name: 'user',
             path: '/test/user',
             component: '@/pages/user',
+            access: 'user',
           },
         ],
       },

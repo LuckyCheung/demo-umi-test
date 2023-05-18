@@ -6,14 +6,20 @@ import { Provider } from 'react-redux';
 import store from '@/store';
 import styles from './index.less';
 
-export const AppProvider: React.FC = ({ children }) => {
+export const AppLayout: React.FC<IRouteComponentProps> = ({
+  children,
+  routes,
+}) => {
   const [settings, setSetting] = useState<Partial<ProSettings> | undefined>({
     layout: 'side',
     fixSiderbar: true,
   });
   return (
     <Provider store={store}>
-      {children}
+      {React.cloneElement(children, {
+        ...children!.props,
+        routes,
+      })}
       <SettingDrawer
         enableDarkTheme
         getContainer={() => document.getElementById('base-layout')}
@@ -27,7 +33,7 @@ export const AppProvider: React.FC = ({ children }) => {
   );
 };
 
-const Layout: React.FC<IRouteComponentProps> = ({ children }) => {
+export const PageLayout: React.FC<IRouteComponentProps> = ({ children }) => {
   return (
     <div id="base-layout" className={styles['base-layout']}>
       <PageContainer fixedHeader>{children}</PageContainer>
@@ -36,4 +42,4 @@ const Layout: React.FC<IRouteComponentProps> = ({ children }) => {
   );
 };
 
-export default Layout;
+export default PageLayout;
