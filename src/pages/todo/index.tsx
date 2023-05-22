@@ -1,4 +1,6 @@
 import React, { createContext } from 'react';
+import { IRouteComponentProps } from 'umi';
+
 import { Card } from 'antd';
 
 import Header from './com/Header';
@@ -11,7 +13,14 @@ import styles from './index.less';
 
 export const ToDoContext = createContext<Record<string, any>>({});
 
-const ToDo: React.FC = () => {
+type Props = {
+  id: string;
+};
+
+const ToDo: React.FC<IRouteComponentProps<Props>> = (props) => {
+  const { match } = props;
+  console.log(match.params.id, '入参');
+
   const {
     editCacheId,
     setEditCacheId,

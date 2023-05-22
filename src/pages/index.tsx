@@ -5,7 +5,7 @@ import styles from './index.less';
 
 const IndexPage: FC = () => {
   function handleGoToDoList() {
-    history.push('/test/todo');
+    history.push(`/test/todo/${1}`);
   }
   return (
     <Row gutter={16}>

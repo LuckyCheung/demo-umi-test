@@ -25,7 +25,7 @@ const routes: IRoute[] = [
         routes: [
           {
             name: 'todo',
-            path: '/test/todo',
+            path: '/test/todo/:a',
             component: '@/pages/todo',
             access: 'todo',
           },

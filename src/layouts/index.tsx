@@ -6,11 +6,13 @@ import { Provider } from 'react-redux';
 import store from '@/store';
 import styles from './index.less';
 
-export const AppLayout: React.FC<any> = ({ children, routes }) => {
+export const AppLayout: React.FC<any> = (props) => {
+  const { children, routes } = props;
   const [settings, setSetting] = useState<Partial<ProSettings> | undefined>({
     layout: 'side',
     fixSiderbar: true,
   });
+
   return (
     <Provider store={store}>
       {React.cloneElement(children, {
@@ -30,10 +32,10 @@ export const AppLayout: React.FC<any> = ({ children, routes }) => {
   );
 };
 
-export const PageLayout: React.FC<IRouteComponentProps> = ({ children }) => {
+export const PageLayout: React.FC<IRouteComponentProps> = (props) => {
   return (
     <div id="base-layout" className={styles['base-layout']}>
-      <PageContainer fixedHeader>{children}</PageContainer>
+      <PageContainer fixedHeader>{props.children}</PageContainer>
       <div className={styles['layout-footer']}></div>
     </div>
   );

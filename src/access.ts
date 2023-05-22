@@ -1,6 +1,6 @@
 function access() {
   return {
-    home: false,
+    home: true,
     todo: true,
     user: false,
   };
